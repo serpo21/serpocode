@@ -18,54 +18,107 @@ function setLanguage(lang) {
         document.documentElement.setAttribute("lang", "tr");
     }
 
-    try {
-        localStorage.setItem("preferredLang", lang);
-    } catch (e) {
-        /* localStorage kullanılamıyorsa sessizce geç */
-    }
-
-    // Kart/görsel gibi animasyonları dil değişince yeniden tetikle
+    try { localStorage.setItem("preferredLang", lang); } catch (e) {}
     revealOnScroll();
 }
 
 function initLanguage() {
     let savedLang = "tr";
-    try {
-        savedLang = localStorage.getItem("preferredLang") || "tr";
-    } catch (e) {
-        savedLang = "tr";
-    }
+    try { savedLang = localStorage.getItem("preferredLang") || "tr"; } catch (e) {}
     setLanguage(savedLang);
 }
 
 /* =========================================
-   SCROLL REVEAL ANİMASYONU
+   HERO EDİTÖR - YAZMA ANİMASYONU
+   (kod içeriği dilden bağımsız, gerçek kod gibi)
+========================================= */
+const codeLines = [
+    { text: "const developer = {", cls: "" },
+    { text: "  name: \"Serpo\",", indent: true, key: "name", val: "\"Serpo\"" },
+    { text: "  role: \"Software Developer\",", indent: true, key: "role", val: "\"Software Developer\"" },
+    { text: "  level: \"Mid-level\",", indent: true, key: "level", val: "\"Mid-level\"" },
+    { text: "  stack: [\"C#\", \".NET\", \"Python\"],", indent: true, key: "stack", val: "[\"C#\", \".NET\", \"Python\"]" },
+    { text: "  status: \"Open to new projects\"", indent: true, key: "status", val: "\"Open to new projects\"" },
+    { text: "};", cls: "" }
+];
+
+function buildLineHTML(line, partial) {
+    if (!line.key) {
+        return `<span class="kw">${escapeHTML(partial)}</span>`;
+    }
+    const prefix = `  ${line.key}: `;
+    if (partial.length <= prefix.length) {
+        return escapeHTML(partial);
+    }
+    const valuePart = partial.slice(prefix.length);
+    return `${escapeHTML(prefix)}<span class="str prop-val">${escapeHTML(valuePart)}</span>`;
+}
+
+function escapeHTML(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function typeEditor() {
+    const container = document.getElementById("typedCode");
+    if (!container) return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+        container.innerHTML = codeLines.map(l => escapeHTML(l.text)).join("\n") + '<span class="cursor"></span>';
+        return;
+    }
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let doneLines = [];
+
+    function step() {
+        if (lineIndex >= codeLines.length) {
+            container.innerHTML = doneLines.join("\n") + '\n<span class="cursor"></span>';
+            return;
+        }
+        const line = codeLines[lineIndex];
+        charIndex++;
+        const partial = line.text.slice(0, charIndex);
+        const renderedCurrent = buildLineHTML(line, partial);
+        container.innerHTML = doneLines.concat(renderedCurrent).join("\n") + '<span class="cursor"></span>';
+
+        if (charIndex >= line.text.length) {
+            doneLines.push(buildLineHTML(line, line.text));
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(step, 160);
+        } else {
+            setTimeout(step, 18 + Math.random() * 22);
+        }
+    }
+    step();
+}
+
+/* =========================================
+   SCROLL REVEAL
 ========================================= */
 const reveals = document.querySelectorAll(".reveal");
 function revealOnScroll() {
-    const trigger = window.innerHeight * 0.85;
+    const trigger = window.innerHeight * 0.88;
     reveals.forEach(item => {
         const top = item.getBoundingClientRect().top;
-        if (top < trigger) {
-            item.classList.add("active");
-        }
+        if (top < trigger) item.classList.add("active");
     });
 }
 window.addEventListener("scroll", revealOnScroll);
 
 /* =========================================
-   NAV BAR - SCROLL ARKA PLANI
+   NAV - SCROLL ARKA PLANI
 ========================================= */
 const nav = document.querySelector("nav");
 window.addEventListener("scroll", () => {
     if (!nav) return;
     if (window.scrollY > 40) {
-        nav.style.background = "rgba(5,8,22,.85)";
-        nav.style.border = "1px solid rgba(255,255,255,.12)";
+        nav.style.background = "rgba(18,19,28,.85)";
         nav.style.boxShadow = "0 15px 35px rgba(0,0,0,.35)";
     } else {
-        nav.style.background = "rgba(255,255,255,.05)";
-        nav.style.border = "1px solid rgba(255,255,255,.08)";
+        nav.style.background = "rgba(26,27,38,.6)";
         nav.style.boxShadow = "none";
     }
 });
@@ -75,13 +128,11 @@ window.addEventListener("scroll", () => {
 ========================================= */
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
-
 if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", () => {
         menuToggle.classList.toggle("open");
         navLinks.classList.toggle("open");
     });
-
     navLinks.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
             menuToggle.classList.remove("open");
@@ -91,52 +142,30 @@ if (menuToggle && navLinks) {
 }
 
 /* =========================================
-   SAYFA YÜKLENME EFEKTİ
+   FARE TAKİPLİ GLOW (hafif, tek nokta)
+========================================= */
+const glow = document.getElementById("glow");
+if (glow && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.addEventListener("mousemove", e => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        glow.style.background = `radial-gradient(500px circle at ${x}% ${y}%, rgba(122,162,247,.10), transparent 60%)`;
+    });
+}
+
+/* =========================================
+   SAYFA YÜKLENME
 ========================================= */
 window.addEventListener("load", () => {
     document.body.style.opacity = "1";
+    typeEditor();
 });
 
 /* =========================================
-   FARE HAREKETİYLE ARKA PLAN EFEKTİ
-========================================= */
-const bg = document.querySelector(".background");
-document.addEventListener("mousemove", e => {
-    if (!bg) return;
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
-    bg.style.background = `
-        radial-gradient(circle at ${x}% ${y}%, rgba(0,191,255,.20), transparent 18%),
-        radial-gradient(circle at 20% 20%, rgba(0,174,255,.18), transparent 28%),
-        radial-gradient(circle at 80% 10%, rgba(160,0,255,.16), transparent 30%),
-        radial-gradient(circle at 50% 80%, rgba(0,255,180,.14), transparent 35%),
-        #050816
-    `;
-});
-
-/* =========================================
-   KART PARLAMA EFEKTİ
-========================================= */
-const cards = document.querySelectorAll(".card");
-cards.forEach(card => {
-    card.addEventListener("mousemove", e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,.12), rgba(255,255,255,.05))`;
-    });
-    card.addEventListener("mouseleave", () => {
-        card.style.background = "rgba(255,255,255,.05)";
-    });
-});
-
-/* =========================================
-   FOOTER YIL BİLGİSİ
+   FOOTER YIL
 ========================================= */
 const yearEl = document.getElementById("year");
-if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-}
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* =========================================
    BAŞLANGIÇ
