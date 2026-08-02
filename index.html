@@ -1,181 +1,226 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Serpo Code</title>
-
+    <title>Serpo Code | Yazılım & Otomasyon Çözümleri</title>
+    <meta name="description" content="Serpo Code - Profesyonel masaüstü uygulamaları, oyun yazılımları ve özel otomasyon sistemleri.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
 </head>
-
 <body>
 
     <div class="background"></div>
+    <div class="noise-overlay"></div>
 
     <header>
-
         <nav>
+            <a href="#home" class="logo">SERPO<span>CODE</span></a>
 
-            <div class="logo">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
 
-                SERPO CODE
-
-            </div>
-
-            <ul>
-
-                <li><a href="#home">Ana Sayfa</a></li>
-
-                <li><a href="#projects">Projelerim</a></li>
-
-                <li><a href="#contact">Discord</a></li>
-
+            <ul id="navLinks">
+                <li>
+                    <a href="#home">
+                        <span class="tr-text">Ana Sayfa</span>
+                        <span class="en-text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#about">
+                        <span class="tr-text">Hakkımda</span>
+                        <span class="en-text">About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#services">
+                        <span class="tr-text">Hizmetler</span>
+                        <span class="en-text">Services</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects">
+                        <span class="tr-text">Projelerim</span>
+                        <span class="en-text">Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact">
+                        <span class="tr-text">İletişim</span>
+                        <span class="en-text">Contact</span>
+                    </a>
+                </li>
+                <li class="lang-container">
+                    <button class="lang-button active" id="btn-tr" onclick="setLanguage('tr')">TR</button>
+                    <button class="lang-button" id="btn-en" onclick="setLanguage('en')">EN</button>
+                </li>
             </ul>
-
         </nav>
-
     </header>
 
-
+    <!-- HERO -->
     <section id="home" class="hero">
-
         <div class="hero-content">
+            <span class="badge reveal">
+                <span class="dot"></span>
+                <span class="tr-text">Yeni projelere açığım</span>
+                <span class="en-text">Open for new projects</span>
+            </span>
 
-            <h1 class="reveal">
+            <h1 class="reveal delay1 tr-text">Fikirlerinizi <span class="gradient-text">Yazılıma</span> Dönüştürüyorum</h1>
+            <h1 class="reveal delay1 en-text">Turning Your Ideas Into <span class="gradient-text">Software</span></h1>
 
-                Modern Yazılım Çözümleri
+            <p class="reveal delay2 tr-text">Profesyonel masaüstü uygulamaları, oyun çözümleri ve size özel otomasyon sistemleri geliştiriyorum. Güvenli, optimize ve tamamen lisanslı.</p>
+            <p class="reveal delay2 en-text">I build professional desktop applications, gaming solutions, and tailor-made automation systems. Secure, optimized, and fully licensed.</p>
 
-            </h1>
+            <div class="hero-buttons reveal delay3">
+                <a href="#projects" class="btn btn-primary">
+                    <span class="tr-text">Projeleri Gör</span>
+                    <span class="en-text">View Projects</span>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span class="tr-text">İletişime Geç</span>
+                    <span class="en-text">Get in Touch</span>
+                </a>
+            </div>
 
-            <p class="reveal delay1">
-
-                Profesyonel masaüstü uygulamaları,
-                web projeleri ve otomasyon sistemleri geliştiriyorum.
-
-            </p>
-
-            <a href="#projects" class="btn reveal delay2">
-
-                Projeleri Gör
-
-            </a>
-
+            <div class="hero-stats reveal delay3">
+                <div class="stat">
+                    <strong>50+</strong>
+                    <span class="tr-text">Tamamlanan Proje</span>
+                    <span class="en-text">Completed Projects</span>
+                </div>
+                <div class="stat">
+                    <strong>100%</strong>
+                    <span class="tr-text">Müşteri Memnuniyeti</span>
+                    <span class="en-text">Client Satisfaction</span>
+                </div>
+                <div class="stat">
+                    <strong>24/7</strong>
+                    <span class="tr-text">Destek</span>
+                    <span class="en-text">Support</span>
+                </div>
+            </div>
         </div>
-
-        <div class="scroll">
-
-            ↓
-
-        </div>
-
+        <a href="#about" class="scroll" aria-label="scroll">↓</a>
     </section>
 
+    <!-- HAKKIMDA -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <span class="eyebrow reveal tr-text">Hakkımda</span>
+            <span class="eyebrow reveal en-text">About Me</span>
 
+            <h2 class="reveal tr-text">Ben Kimim?</h2>
+            <h2 class="reveal en-text">Who Am I?</h2>
 
+            <div class="about-content reveal delay1">
+                <div class="about-text">
+                    <h3 class="tr-text">Merhaba, Ben Serpo</h3>
+                    <h3 class="en-text">Hello, I'm Serpo</h3>
+
+                    <p class="tr-text">Gelişmiş oyun yazılımları ve yüksek performanslı masaüstü programları üzerine odaklanmış profesyonel bir yazılım geliştiriciyim. Projelerimi tamamen güvenli, optimize ve <strong>lisanslı hale getirerek</strong> satışa sunuyorum.</p>
+                    <p class="en-text">I'm a professional software developer focused on advanced gaming software and high-performance desktop applications. I deliver every project fully secure, optimized, and <strong>licensed</strong>.</p>
+
+                    <p class="tr-text">Hazır çözümlerimin yanı sıra, tamamen sizin ihtiyaçlarınıza özel <strong>istek üzerine yazılımlar ve otomasyon sistemleri</strong> de geliştiriyorum. Süreç boyunca tek bir kural geçerlidir: <strong>%100 müşteri memnuniyeti</strong> ve kusursuz işçilik.</p>
+                    <p class="en-text">In addition to ready-made solutions, I also build <strong>custom software and automation systems</strong> tailored to your exact needs. From start to delivery, one rule always applies: <strong>100% customer satisfaction</strong> and flawless craftsmanship.</p>
+
+                    <div class="about-features">
+                        <span class="feature-tag">🛡️ <span class="tr-text">Lisanslı Yazılımlar</span><span class="en-text">Licensed Software</span></span>
+                        <span class="feature-tag">🎮 <span class="tr-text">Oyun Çözümleri</span><span class="en-text">Gaming Solutions</span></span>
+                        <span class="feature-tag">💻 <span class="tr-text">Özel Projeler</span><span class="en-text">Custom Projects</span></span>
+                        <span class="feature-tag">⭐ <span class="tr-text">Müşteri Odaklı</span><span class="en-text">Customer Focused</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HİZMETLER -->
+    <section id="services" class="services">
+        <span class="eyebrow reveal tr-text">Neler Yapıyorum</span>
+        <span class="eyebrow reveal en-text">What I Do</span>
+        <h2 class="section-title reveal tr-text">Hizmetlerim</h2>
+        <h2 class="section-title reveal en-text">My Services</h2>
+
+        <div class="cards services-cards">
+            <div class="card reveal">
+                <div class="card-icon">🖥️</div>
+                <h3 class="tr-text">Masaüstü Uygulamaları</h3>
+                <h3 class="en-text">Desktop Applications</h3>
+                <p class="tr-text">C# ve .NET ile yüksek performanslı, modern arayüzlü masaüstü yazılımları.</p>
+                <p class="en-text">High-performance, modern-interface desktop software built with C# and .NET.</p>
+            </div>
+            <div class="card reveal delay1">
+                <div class="card-icon">🤖</div>
+                <h3 class="tr-text">Otomasyon & Yapay Zekâ</h3>
+                <h3 class="en-text">Automation & AI</h3>
+                <p class="tr-text">Python tabanlı, yapay zekâ destekli otomasyon sistemleri ve süreç iyileştirmeleri.</p>
+                <p class="en-text">Python-based, AI-powered automation systems and process optimizations.</p>
+            </div>
+            <div class="card reveal delay2">
+                <div class="card-icon">🌐</div>
+                <h3 class="tr-text">Web Tabanlı Sistemler</h3>
+                <h3 class="en-text">Web-Based Systems</h3>
+                <p class="tr-text">Yönetim panelleri, entegre sistemler ve modern web arayüzleri.</p>
+                <p class="en-text">Admin panels, integrated systems, and modern web interfaces.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJELER -->
     <section id="projects" class="projects">
-
-        <h2 class="section-title reveal">
-
-            Projelerim
-
-        </h2>
-
+        <span class="eyebrow reveal tr-text">Portfolyo</span>
+        <span class="eyebrow reveal en-text">Portfolio</span>
+        <h2 class="section-title reveal tr-text">Projelerim</h2>
+        <h2 class="section-title reveal en-text">My Projects</h2>
 
         <div class="cards">
-
             <div class="card reveal">
-
+                <div class="card-tag">C# • .NET</div>
                 <h3>Project Alpha</h3>
-
-                <p>
-
-                    Modern masaüstü yazılımı.
-
-                </p>
-
-                <span>C# • .NET</span>
-
+                <p class="tr-text">Modern arayüzlü masaüstü yazılımı.</p>
+                <p class="en-text">Modern desktop software with a clean UI.</p>
             </div>
-
-
-
-            <div class="card reveal">
-
+            <div class="card reveal delay1">
+                <div class="card-tag">Python • AI</div>
                 <h3>Project Orion</h3>
-
-                <p>
-
-                    Yapay zekâ destekli otomasyon.
-
-                </p>
-
-                <span>Python • AI</span>
-
+                <p class="tr-text">Yapay zekâ destekli otomasyon sistemi.</p>
+                <p class="en-text">AI-powered automation system.</p>
             </div>
-
-
-
-            <div class="card reveal">
-
+            <div class="card reveal delay2">
+                <div class="card-tag">Web • Full-Stack</div>
                 <h3>Project Nova</h3>
-
-                <p>
-
-                    Web tabanlı yönetim sistemi.
-
-                </p>
-
-                <span>HTML • CSS • JS</span>
-
+                <p class="tr-text">Web tabanlı yönetim sistemi.</p>
+                <p class="en-text">Web-based management system.</p>
             </div>
-
         </div>
-
     </section>
 
-
-
-
+    <!-- İLETİŞİM -->
     <section id="contact" class="contact">
+        <span class="eyebrow reveal tr-text">İletişim</span>
+        <span class="eyebrow reveal en-text">Contact</span>
+        <h2 class="section-title reveal tr-text">Bir Proje mi Var Aklınızda?</h2>
+        <h2 class="section-title reveal en-text">Have a Project in Mind?</h2>
 
-        <h2 class="section-title reveal">
+        <p class="reveal delay1 tr-text">Sorularınız veya proje talepleriniz için benimle Discord üzerinden iletişime geçebilirsiniz.</p>
+        <p class="reveal delay1 en-text">For questions or project requests, feel free to reach out to me on Discord.</p>
 
-            Discord
-
-        </h2>
-
-        <p class="reveal">
-
-            Benimle Discord üzerinden iletişime geçebilirsin.
-
-        </p>
-
-        <div class="discord reveal">
-
-            discord.gg/ornek
-
-        </div>
-
+        <a href="#" class="discord reveal delay2">
+            <span class="tr-text">Discord'da İletişime Geç</span>
+            <span class="en-text">Contact on Discord</span>
+        </a>
     </section>
-
-
-
 
     <footer>
-
-        © 2026 Serpo Code
-
+        <p>&copy; <span id="year"></span> Serpo Code — <span class="tr-text">Tüm hakları saklıdır.</span><span class="en-text">All rights reserved.</span></p>
     </footer>
 
-<script src="js/script.js"></script>
-
+    <script src="js/script.js"></script>
 </body>
-
 </html>
