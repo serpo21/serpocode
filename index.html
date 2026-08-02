@@ -246,35 +246,58 @@
   <h2 class="reveal tr-text">Projelerim</h2>
   <h2 class="reveal en-text">Projects</h2>
 
-  <div class="cards repo-cards">
-    <div class="card repo-card reveal delay1">
-      <div class="repo-top">
-        <span class="mono repo-icon">📦</span>
-        <span class="repo-name mono">project-alpha</span>
+  <!-- SRPmouse Ana Kart -->
+  <div class="project-showcase reveal delay1">
+
+    <!-- Sol: Galeri -->
+    <div class="project-gallery">
+      <div class="gallery-main">
+        <img src="img/srpmouse-2.png" alt="SRPmouse Macro Settings" id="galleryMain" loading="lazy">
       </div>
-      <p class="tr-text">Windows için geliştirilmiş, sade ve hızlı bir masaüstü yönetim aracı.</p>
-      <p class="en-text">A simple, fast desktop management tool built for Windows.</p>
-      <div class="tags"><span class="tag cyan">C#</span><span class="tag cyan">.NET</span></div>
+      <div class="gallery-thumbs">
+        <img src="img/srpmouse-2.png" alt="Macro Settings" class="thumb active" onclick="switchImg(this)">
+        <img src="img/srpmouse-1.png" alt="License Activation" class="thumb" onclick="switchImg(this)">
+        <img src="img/srpmouse-3.png" alt="About" class="thumb" onclick="switchImg(this)">
+      </div>
     </div>
-    <div class="card repo-card reveal delay2">
-      <div class="repo-top">
-        <span class="mono repo-icon">📦</span>
-        <span class="repo-name mono">project-orion</span>
+
+    <!-- Sağ: Bilgi + Satış -->
+    <div class="project-info">
+      <div class="project-header">
+        <span class="project-badge cyan mono tr-text">🎮 Oyun Yazılımı</span>
+        <span class="project-badge cyan mono en-text">🎮 Gaming Software</span>
+        <span class="project-badge sale mono tr-text">💰 Satılık</span>
+        <span class="project-badge sale mono en-text">💰 For Sale</span>
       </div>
-      <p class="tr-text">Belirli görevleri zamanlayan ve raporlayan bir otomasyon script'i.</p>
-      <p class="en-text">An automation script that schedules and reports on specific tasks.</p>
-      <div class="tags"><span class="tag purple">Python</span></div>
-    </div>
-    <div class="card repo-card reveal delay3">
-      <div class="repo-top">
-        <span class="mono repo-icon">📦</span>
-        <span class="repo-name mono">project-nova</span>
+
+      <h3 class="project-title">SRPmouse</h3>
+      <p class="project-version mono muted">v1.0.0 · C# · .NET · WinForms</p>
+
+      <p class="project-desc tr-text">Oyuncular için geliştirilmiş gelişmiş bir fare makro aracı. Silah bazlı makro profilleri, hassas hız ayarları, ses bildirimleri ve HWID tabanlı lisans sistemiyle teslim edildi. Tamamen sıfırdan yazılmış, tüm kaynak kodları bana ait.</p>
+      <p class="project-desc en-text">An advanced mouse macro tool built for gamers. Weapon-based macro profiles, precision speed settings, sound notifications, and HWID-based license system — fully written from scratch. All source code is mine.</p>
+
+      <ul class="project-features">
+        <li><span class="feat-icon accent-cyan">✓</span> <span class="tr-text">Silah bazlı makro profilleri (F1–F12 kısayol)</span><span class="en-text">Weapon-based macro profiles (F1–F12 hotkey)</span></li>
+        <li><span class="feat-icon accent-cyan">✓</span> <span class="tr-text">Down Speed 1 &amp; 2 hassas hız ayarı</span><span class="en-text">Down Speed 1 &amp; 2 precision tuning</span></li>
+        <li><span class="feat-icon accent-cyan">✓</span> <span class="tr-text">Aktivasyon/deaktivasyon ses bildirimi</span><span class="en-text">Activation/deactivation sound notification</span></li>
+        <li><span class="feat-icon accent-green">✓</span> <span class="tr-text">HWID tabanlı lisans aktivasyonu</span><span class="en-text">HWID-based license activation</span></li>
+        <li><span class="feat-icon accent-green">✓</span> <span class="tr-text">Tüm kaynak kodlar dahil</span><span class="en-text">Full source code included</span></li>
+        <li><span class="feat-icon accent-green">✓</span> <span class="tr-text">Anahtar teslim — kuruluma hazır</span><span class="en-text">Turnkey — ready to deploy</span></li>
+      </ul>
+
+      <div class="project-cta">
+        <a href="https://discord.gg/Sv9jXsp2fc" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <span class="tr-text">Fiyat Sor →</span>
+          <span class="en-text">Ask for Price →</span>
+        </a>
+        <div class="cta-note mono muted tr-text">Discord'dan ulaşın, 24 saat içinde dönüş yaparım.</div>
+        <div class="cta-note mono muted en-text">Reach out on Discord, I'll reply within 24 hours.</div>
       </div>
-      <p class="tr-text">Küçük ekipler için hazırlanmış basit bir web tabanlı takip paneli.</p>
-      <p class="en-text">A simple web-based tracking panel built for small teams.</p>
-      <div class="tags"><span class="tag orange">HTML</span><span class="tag orange">JS</span></div>
     </div>
   </div>
+
+  <p class="more-projects reveal mono muted tr-text">// Daha fazla proje yakında — özel istek projeler için de iletişime geçebilirsiniz.</p>
+  <p class="more-projects reveal mono muted en-text">// More projects coming soon — feel free to reach out for custom project requests too.</p>
 </section>
 
 <!-- ================= İLETİŞİM ================= -->

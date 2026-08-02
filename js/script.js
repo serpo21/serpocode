@@ -168,6 +168,22 @@ const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* =========================================
+   PROJE GALERİSİ
+========================================= */
+function switchImg(thumb) {
+    const main = document.getElementById("galleryMain");
+    if (!main) return;
+    main.style.opacity = "0";
+    setTimeout(() => {
+        main.src = thumb.src;
+        main.alt = thumb.alt;
+        main.style.opacity = "1";
+    }, 200);
+    document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
+    thumb.classList.add("active");
+}
+
+/* =========================================
    BAŞLANGIÇ
 ========================================= */
 initLanguage();

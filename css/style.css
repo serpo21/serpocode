@@ -447,6 +447,116 @@ nav ul li a:hover{ color:var(--green); }
 .repo-card p{ margin-bottom:16px; }
 
 /* =========================================
+   PROJE SHOWCASE
+========================================= */
+.project-showcase{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:44px;
+    background:var(--surface);
+    border:1px solid var(--border-strong);
+    border-radius:20px;
+    padding:36px;
+    align-items:start;
+}
+
+/* galeri */
+.gallery-main{
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    background:var(--bg-soft);
+    margin-bottom:12px;
+}
+.gallery-main img{
+    width:100%;
+    display:block;
+    border-radius:12px;
+    transition:opacity .3s ease;
+}
+.gallery-thumbs{
+    display:flex;
+    gap:10px;
+}
+.thumb{
+    width:calc(33.33% - 7px);
+    border-radius:8px;
+    border:2px solid var(--border);
+    cursor:pointer;
+    opacity:.55;
+    transition:.25s;
+    object-fit:cover;
+    aspect-ratio:16/10;
+}
+.thumb:hover{ opacity:.85; }
+.thumb.active{ border-color:var(--cyan); opacity:1; }
+
+/* bilgi paneli */
+.project-header{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.project-badge{
+    font-size:11.5px;
+    font-weight:700;
+    padding:4px 12px;
+    border-radius:20px;
+}
+.project-badge.cyan{ background:rgba(125,207,255,.1); color:var(--cyan); border:1px solid rgba(125,207,255,.25); }
+.project-badge.sale{ background:rgba(158,206,106,.1); color:var(--green); border:1px solid rgba(158,206,106,.25); }
+
+.project-title{
+    font-size:28px;
+    font-weight:800;
+    color:var(--text-bright);
+    margin-bottom:6px;
+    font-family:var(--font-mono);
+}
+.project-version{ font-size:12.5px; margin-bottom:18px; display:block; }
+
+.project-desc{
+    font-size:15px;
+    color:var(--text);
+    line-height:1.8;
+    margin-bottom:22px;
+}
+
+.project-features{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:28px;
+}
+.project-features li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:14px;
+    color:var(--text);
+    line-height:1.5;
+}
+.feat-icon{
+    font-family:var(--font-mono);
+    font-size:13px;
+    font-weight:700;
+    flex-shrink:0;
+    margin-top:1px;
+}
+
+.project-cta{ display:flex; flex-direction:column; gap:10px; }
+.cta-note{ font-size:12px; }
+
+.more-projects{
+    display:block;
+    text-align:center;
+    margin-top:36px;
+    font-size:13px;
+}
+
+@media(max-width:860px){
+    .project-showcase{ grid-template-columns:1fr; }
+    .gallery-thumbs .thumb{ aspect-ratio:16/9; }
+}
+
+/* =========================================
    İLETİŞİM
 ========================================= */
 .contact{ text-align:center; }
